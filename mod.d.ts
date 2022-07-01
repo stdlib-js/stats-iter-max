@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2019 The Stdlib Authors.
@@ -16,19 +16,31 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 2.0
 
-var runif = require( '@stdlib/random-iter-uniform' );
-var itermax = require( './../lib' );
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-// Create an iterator for generating uniformly distributed pseudorandom numbers:
-var rand = runif( -10.0, 10.0, {
-	'seed': 1234,
-	'iter': 100
-});
+import { Iterator } from '@stdlib/types/iter';
 
-// Compute the maximum value:
-var m = itermax( rand );
-// returns <number>
+/**
+* Computes the maximum value of all iterated values.
+*
+* @param iterator - input iterator
+* @returns maximum value
+*
+* @example
+* var runif = require( `@stdlib/random/iter/uniform` );
+*
+* var rand = runif( -10.0, 10.0, {
+*     'iter': 100
+* });
+*
+* var m = itermax( rand );
+* // returns <number>
+*/
+declare function itermax( iterator: Iterator ): number | null;
 
-console.log( 'Max: %d.', m );
+
+// EXPORTS //
+
+export = itermax;
