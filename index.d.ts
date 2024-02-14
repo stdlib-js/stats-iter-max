@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2019 The Stdlib Authors.
@@ -16,23 +16,17 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var isIteratorLike = require( '@stdlib/assert-is-iterator-like' );
-var incrmax = require( '@stdlib/stats-incr-max' );
-var format = require( '@stdlib/string-format' );
-
-
-// MAIN //
+import { Iterator } from '@stdlib/types/iter';
 
 /**
 * Computes the maximum value of all iterated values.
 *
-* @param {Iterator} iterator - input iterator
-* @throws {TypeError} must provide an iterator
-* @returns {(number|null)} maximum value
+* @param iterator - input iterator
+* @returns maximum value
 *
 * @example
 * var runif = require( '@stdlib/random-iter-uniform' );
@@ -44,28 +38,9 @@ var format = require( '@stdlib/string-format' );
 * var m = itermax( rand );
 * // returns <number>
 */
-function itermax( iterator ) {
-	var acc;
-	var v;
-	if ( !isIteratorLike( iterator ) ) {
-		throw new TypeError( format( 'invalid argument. Must provide an iterator. Value: `%s`.', iterator ) );
-	}
-	acc = incrmax();
-	while ( true ) {
-		v = iterator.next();
-		if ( v.done ) {
-			break;
-		}
-		if ( typeof v.value === 'number' ) {
-			acc( v.value );
-		} else {
-			acc( NaN );
-		}
-	}
-	return acc();
-}
+declare function itermax( iterator: Iterator ): number | null;
 
 
 // EXPORTS //
 
-module.exports = itermax;
+export = itermax;
